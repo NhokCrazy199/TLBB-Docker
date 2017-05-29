@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  ubuntu:
+    build:
+      context: ./ubuntu
+      dockerfile: Dockerfile
+    ports:
+      - "12680:12680" # Billing port
+      - "" # Server port (serverlist.txt)
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "tlbb1234"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
