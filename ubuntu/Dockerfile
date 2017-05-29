@@ -1,4 +1,5 @@
-FROM ubuntu:14.04
+FROM daald/ubuntu32:trusty
+#FROM ubuntu:14.04
 
 WORKDIR /home/tlbb
 
@@ -16,4 +17,4 @@ ADD ./config/odbc.ini /etc/odbc.ini
 EXPOSE 7384 12680
 CMD ["tail","-f","/dev/null"]
 
-RUN chmod -R 0777 /home/tlbb/Server/*
+RUN sudo chmod -R 0777 /home/tlbb/Server/* ; exit 0
