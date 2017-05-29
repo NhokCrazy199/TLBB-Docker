@@ -1,3 +1,6 @@
 FROM mysql:5.7
 
-RUN mysqld --user=root --verbose
+COPY ./initdb.d/tlbbdb.sql /docker-entrypoint-initdb.d
+
+EXPOSE 3306
+CMD ["mysqld"]

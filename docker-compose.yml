@@ -7,7 +7,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "12680:12680" # Billing port
-      - "" # Server port (serverlist.txt)
+      - "7384:7384" # Server port (serverlist.txt)
+    volumes:
+      - ./workspace:/home/tlbb
+    links:
+      - mysql
+    restart: always
   mysql:
     build:
       context: ./mysql
@@ -19,4 +24,5 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "tlbb1234"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-
+      MYSQL_DATABASE: "tlbbdb"
+    restart: always
