@@ -8,6 +8,7 @@ services:
     ports:
       - "12680:12680" # Billing port
       - "7384:7384" # Server port (serverlist.txt)
+      - "222:22"
     volumes:
       - ./workspace:/home/tlbb
     links:
