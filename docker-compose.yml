@@ -6,9 +6,11 @@ services:
       context: ./ubuntu
       dockerfile: Dockerfile
     ports:
-      - "12680:12680" # Billing port
+      # - "12680:12680" # Billing port
       - "7384:7384" # Server port (serverlist.txt)
-      - "222:22"
+      - "3731:3731"
+      - "8880:8880"
+      - "8882:8882"
     volumes:
       - ./workspace:/home/tlbb
     links:
