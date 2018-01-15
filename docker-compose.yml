@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   ubuntu:
@@ -11,8 +11,10 @@ services:
       - "3731:3731"
       - "8880:8880"
       - "8882:8882"
+      - "8080:80"
     volumes:
-      - ./workspace:/home/tlbb
+      - ./workspace/server:/home/tlbb
+      - ./workspace/website:/var/www/html
     links:
       - mysql
     restart: always
