@@ -11,10 +11,8 @@ services:
       - "3731:3731"
       - "8880:8880"
       - "8882:8882"
-      - "8080:80"
     volumes:
       - ./workspace/server:/home/tlbb
-      - ./workspace/website:/var/www/html
     links:
       - mysql
     restart: always
@@ -31,3 +29,12 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: "tlbbdb"
     restart: always
+  web:
+    build:
+      context: ./website
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./workspace/website:/var/www
+
